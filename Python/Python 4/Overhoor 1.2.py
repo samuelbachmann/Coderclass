@@ -1,5 +1,6 @@
 import os, sys
 schrembreedte = 80
+schremhoogte = 40
 
 def clear():
     os.system("clear")
@@ -29,7 +30,7 @@ def nieuw_lijst():
     header("Bestand naam kiezen.")
     footer()
     naam_lijst = input("Naam bestand. ")
-    f = open(naam_lijst + ".txt", "w+")
+    f = open(naam_lijst + ".wrd", "w")
     while True:
         clear()
         header("Woorden of begrip toevoegen.")
@@ -38,20 +39,20 @@ def nieuw_lijst():
         woord_1 = input("Geef een woord of begrip. ")
         if woord_1.lower() == "q":
             main()
+            f.close()
             break
         clear()
         header("Geef een vertaling of betekenis in")
         print_regel(woord_1)
-        print_regel("Om te stoppen toets Q")
+        print_regel("Om te stoppen toets en oplsaam W")
         footer()
         woord_2 = input("Geef een vertaling of betekenis. ")    
-        if woord_2.lower == "q":
+        if woord_2.lower() == "q":
+            f.close()
             main()
-            for key in woorden_lijst:
-                f.write(key + "=" + woorden_lijst[value] + "\n")
             break
         else:
-            woorden_lijst[woord_1] = woord_2
+            f.write(woord_1 + "=" + woord_2 + " \n")
 
         
 def print_regel(text):
