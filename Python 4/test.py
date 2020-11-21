@@ -1,0 +1,1 @@
+f= open("bakvet.txt","w+")
