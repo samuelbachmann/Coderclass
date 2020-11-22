@@ -1,7 +1,8 @@
 import os, sys
 os.chdir("woordenlijst")
 
-bestanden = os.listdir()
-for i in len(bestanden):
-    print(int(i)
+print(os.listdir())
+keuze_lijst= ("Selecteer een lijst: ")
+keuze_lijst = (keuze_lijst + ".txt")
 
+print(keuze_lijst)

@@ -62,6 +62,8 @@ def nieuw_lijst():
 
 def verander_lijst():
     clear()
+    bestand = os.listdir()
+    
     header("Lijst veranderen.")
     print_regel("Kies de lijst die u wilt veranderen.")
     print_regel(" ")
@@ -71,14 +73,16 @@ def verander_lijst():
     footer()
 
     keuze_lijst= input("Selecteer een lijst: ")
-    keuze_lijst = (keuze_lijst + ".txt")
-    if keuze_lijst in os.listdir():
-        f = open(naam_lijst + ".wrd", "w")
+    lijst_txt = (keuze_lijst + ".wrd")
+    f = open(keuze_lijst + ".wrd", "w") 
 
+    if lijst_txt in bestand:       
+            with open('lijst.txt') as f:
+                bestandsdata = f.read().split("\n")
+        print(bestandsdata)
     else:
-        print("Er is geen lijst met de naam:" + keuze_lijst)
-        
-   
+        print("Er is geen lijst met de naam: " + keuze_lijst)
+        verander_lijst()
 
 def print_regel(text):
     print(("|{:^" + str(schrembreedte - 2) + "}|").format(text))
