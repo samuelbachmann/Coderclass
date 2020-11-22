@@ -1,3 +1,7 @@
-test = {1:1, 2:2, 3:3}
-for key in range(test):
-    print(key + " = " + test(key))``
+import os, sys
+os.chdir("woordenlijst")
+
+bestanden = os.listdir()
+for i in len(bestanden):
+    print(int(i)
+

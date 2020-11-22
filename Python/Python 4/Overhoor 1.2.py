@@ -1,15 +1,21 @@
+# Check if i your in the correct folder (Python 4)
+
 import os, sys
 schrembreedte = 80
 schremhoogte = 40
+os.chdir("woordenlijst")
 
 def clear():
     os.system("clear")
+    # os.system("cls") -- Windows
 
 def main():
     resultaat = print_menu()
     print(resultaat)
     if resultaat == "n":
         nieuw_lijst()
+    elif resultaat == "v":
+        verander_lijst()
 
 def print_menu():
     clear()
@@ -54,7 +60,26 @@ def nieuw_lijst():
         else:
             f.write(woord_1 + "=" + woord_2 + " \n")
 
+def verander_lijst():
+    clear()
+    header("Lijst veranderen.")
+    print_regel("Kies de lijst die u wilt veranderen.")
+    print_regel(" ")
+    for file in os.listdir():
+        if file[-4:] == ".wrd":
+            print_regel(file[:-4])
+    footer()
+
+    keuze_lijst= input("Selecteer een lijst: ")
+    keuze_lijst = (keuze_lijst + ".txt")
+    if keuze_lijst in os.listdir():
+        f = open(naam_lijst + ".wrd", "w")
+
+    else:
+        print("Er is geen lijst met de naam:" + keuze_lijst)
         
+   
+
 def print_regel(text):
     print(("|{:^" + str(schrembreedte - 2) + "}|").format(text))
 
