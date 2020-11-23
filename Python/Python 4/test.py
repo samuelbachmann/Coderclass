@@ -1,3 +1,8 @@
-test = {1:1, 2:2, 3:3}
-for key in range(test):
-    print(key + " = " + test(key))``
+import os, sys
+os.chdir("woordenlijst")
+
+print(os.listdir())
+keuze_lijst= ("Selecteer een lijst: ")
+keuze_lijst = (keuze_lijst + ".txt")
+
+print(keuze_lijst)
