@@ -75,10 +75,10 @@ def verander_lijst():
     keuze_lijst= input("Selecteer een lijst: ")
     lijst_txt = (keuze_lijst + ".wrd")
     f = open(keuze_lijst + ".wrd", "w") 
-
+    
     if lijst_txt in bestand:       
-            with open('lijst.txt') as f:
-                bestandsdata = f.read().split("\n")
+        with open(lijst_txt) as f:
+            bestandsdata = f.read().split("\n")
         print(bestandsdata)
     else:
         print("Er is geen lijst met de naam: " + keuze_lijst)
