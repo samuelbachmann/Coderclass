@@ -3,11 +3,11 @@
 import os, sys
 schrembreedte = 80
 schremhoogte = 40
-os.chdir("woordenlijst")
+os.chdir("/woordenlijst")
 
 def clear():
-    os.system("clear")
-    # os.system("cls") -- Windows
+    # os.system("clear")
+    os.system("cls")
 
 def main():
     resultaat = print_menu()
@@ -32,7 +32,6 @@ def print_menu():
 
 def nieuw_lijst():
     clear()
-    woorden_lijst = {}
     header("Bestand naam kiezen.")
     footer()
     naam_lijst = input("Naam bestand. ")
@@ -76,14 +75,18 @@ def verander_lijst():
     lijst_txt = (keuze_lijst + ".wrd")
     f = open(keuze_lijst + ".wrd", "r") 
     
-    if lijst_txt in bestand:       
+    if lijst_txt in bestand:
+        clear()       
         with open(lijst_txt) as f:
             bestandsdata = f.read().split("\n")
-
-            for i in bestandsdata:
-                i = bestandsdata.split(',')
+        header("Woorden in lijst")
+        print_regel("")           
+        for e in bestandsdata:
+            print_regel(e)
+        footer()
 
     else:
+        clear()
         print("Er is geen lijst met de naam: " + keuze_lijst)
         verander_lijst()
 
