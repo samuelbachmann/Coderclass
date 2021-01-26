@@ -49,7 +49,7 @@ def nieuw_lijst():
         clear()
         header("Geef een vertaling of betekenis in")
         print_regel(woord_1)
-        print_regel("Om te stoppen toets en oplsaam W")
+        print_regel("Om te stoppen toets en oplsaan Q")
         footer()
         woord_2 = input("Geef een vertaling of betekenis. ")    
         if woord_2.lower() == "q":
@@ -81,7 +81,9 @@ def verander_lijst():
             for line in f:
                 (key, val) = line.split("=")
                 d[key] = val
-            
+                
+                val = d.values.replace("\n","")
+
         print(d)
                  
     else:
