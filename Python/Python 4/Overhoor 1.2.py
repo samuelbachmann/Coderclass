@@ -23,7 +23,7 @@ def print_menu():
     print_regel("")
     print_regel("N Nieuwe lijst.")
     print_regel("V Verander lijst.")
-    print_regel("T Woorden toevoegen aan lijst.")
+    # print_regel("T Woorden toevoegen aan lijst.")
     print_regel("O Woordenlijst overhoren")
     print_regel("Q Stop programma")
     footer()
@@ -72,24 +72,43 @@ def verander_lijst():
             print_regel(file[:-4])
     footer()
 
-    keuze_lijst= input("Selecteer een lijst: ") + ".wrd"
-    f = open(keuze_lijst, "r") 
+    lijst_selectie = input("Selecteer een lijst: ")
+    keuze_lijst=  lijst_selectie + ".wrd"
     
     if keuze_lijst in bestand:
         clear()       
+        f = open(keuze_lijst, "r")
         with open(keuze_lijst) as f:
             for line in f:
-                (key, val) = line.split("=")
-                d[key] = val
                 
-                val = d.values.replace("\n","")
+                (key, val) = line.strip("\n").split("=")
+                d[key] = val
+        header("Inhoud")
+        print_regel(lijst_selectie)
+        print_regel("")
+        
+        for i in d:
+            print_regel(i + " = " + d[i])
 
-        print(d)
-                 
+        print_regel("")
+        header("Veranderen")
+        print_regel("")
+        print_regel("T om een woord toetevoegen.")
+        print_regel("V om een woord te verwijderen.")
+        print_regel("N om het zo te laten.")
+        footer()
+
+        keuze_verandering = input("Wat wilt u doen. ")
+
+        if keuze_verandering.lower() == "t":
+            t_woord1 = input("Geef het woord of begrip. ")
+            t_woord2 = input("Geef de vertaling of betekenis. ")
+            b[t_woord1] = t_woord2
+            
     else:
         clear()
         print("Er is geen lijst met de naam: " + keuze_lijst)
-        verander_lijst()
+        main()
 
 def print_regel(text):
     print(("|{:^" + str(schrembreedte - 2) + "}|").format(text))
