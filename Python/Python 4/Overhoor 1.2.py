@@ -15,7 +15,7 @@ def main():
     if resultaat == "n":
         nieuw_lijst()
     elif resultaat == "v":
-        verander_lijst()
+        verandering()
 
 def print_menu():
     clear()
@@ -23,7 +23,7 @@ def print_menu():
     print_regel("")
     print_regel("N Nieuwe lijst.")
     print_regel("V Verander lijst.")
-    # print_regel("T Woorden toevoegen aan lijst.")
+    print_regel("T Woorden toevoegen aan lijst.")
     print_regel("O Woordenlijst overhoren")
     print_regel("Q Stop programma")
     footer()
@@ -59,11 +59,11 @@ def nieuw_lijst():
         else:
             f.write(woord_1 + "=" + woord_2 + " \n")
 
-def verander_lijst():
+def verandering():
     clear()
-    bestand = os.listdir()
-    d={}
-    
+    bestanden = os.listdir()
+    woorden = {}
+
     header("Lijst veranderen.")
     print_regel("Kies de lijst die u wilt veranderen.")
     print_regel(" ")
@@ -72,46 +72,8 @@ def verander_lijst():
             print_regel(file[:-4])
     footer()
 
-    lijst_selectie = input("Selecteer een lijst: ")
-    keuze_lijst=  lijst_selectie + ".wrd"
-    
-    if keuze_lijst in bestand:
-        clear()       
-        f = open(keuze_lijst, "r")
-        with open(keuze_lijst) as f:
-            for line in f:
-                
-                (key, val) = line.strip("\n").split("=")
-                d[key] = val
-        header("Inhoud")
-        print_regel(lijst_selectie)
-        print_regel("")
-        
-        for i in d:
-            print_regel(i + " = " + d[i])
-
-        print_regel("")
-        header("Veranderen")
-        print_regel("")
-        print_regel("T om een woord toetevoegen.")
-        print_regel("V om een woord te verwijderen.")
-        print_regel("N om het zo te laten.")
-        footer()
-
-        keuze_verandering = input("Wat wilt u doen. ")
-
-        if keuze_verandering.lower() == "t":
-            t_woord1 = input("Geef het woord of begrip. ")
-            t_woord2 = input("Geef de vertaling of betekenis. ")
-            b[t_woord1] = t_woord2
-            
-    else:
-        clear()
-        print("Er is geen lijst met de naam: " + keuze_lijst)
-        main()
-
 def print_regel(text):
-    print(("|{:^" + str(schrembreedte - 2) + "}|").format(text))
+    print(("|{:^" + str(schrembreedte clear- 2) + "}|").format(text))
 
 def footer():
     print_regel("")
@@ -123,3 +85,60 @@ def header(lijst_naam):
     print(("| {:^" + str(schrembreedte - 4)+ "} |").format(lijst_naam))
 
 main()
+
+def lol():
+    # def kies_lijst():
+    #     clear()
+    #     bestand = os.listdir()
+        
+    #     header("Lijst veranderen.")
+    #     print_regel("Kies de lijst die u wilt veranderen.")
+    #     print_regel(" ")
+    #     for file in os.listdir():
+    #         if file[-4:] == ".wrd":
+    #             print_regel(file[:-4])
+    #     footer()
+
+    #     lijst_selectie = input("Selecteer een lijst: ")
+    #     keuze_lijst=  lijst_selectie + ".wrd"
+        
+    #     if keuze_lijst in bestand:
+    #         keuze_verandering(keuze_lijst, lijst_selectie)
+
+    #     else:
+    #         clear()
+    #         print("Er is geen lijst met de naam: " + keuze_lijst)
+    #         main()
+
+    # def keuze_verandering(keuze_lijst, lijst_selectie):
+    #     clear()       
+    #     d = {}
+
+    #     f = open(keuze_lijst, "r")
+    #     with open(keuze_lijst) as f:
+    #         for line in f:
+                
+    #             (key, val) = line.strip("\n").split("=")
+    #             d[key] = val
+    #     header("Inhoud")
+    #     print_regel(lijst_selectie)
+    #     print_regel("")
+        
+    #     for i in d:
+    #         print_regel(i + " = " + d[i])
+
+    #     print_regel("")
+    #     header("Veranderen")
+    #     print_regel("")
+    #     print_regel("T om een woord toetevoegen.")
+    #     print_regel("V om een woord te verwijderen.")
+    #     print_regel("N om het zo te laten.")
+    #     footer()
+
+    #     keuze_ver = input("Wat wilt u doen. ")
+
+    #     if keuze_ver.lower == "t":
+    #         woord_toe()
+
+    # def woord_toe():
+    
