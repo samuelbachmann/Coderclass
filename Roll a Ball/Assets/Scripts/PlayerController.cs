@@ -5,6 +5,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
     public float speed;
+    public float jumpForce;
     public Text countText;
     public Text winText;
 
@@ -19,7 +20,7 @@ public class PlayerController : MonoBehaviour {
         winText.text = "";
     }
 
-    void FixedUpdate ()
+    void Update ()
     {
         float moveHorizontal = Input.GetAxis ("Horizontal");
         float moveVertical = Input.GetAxis ("Vertical");
@@ -27,11 +28,16 @@ public class PlayerController : MonoBehaviour {
         Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 
         rb.AddForce (movement * speed);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
     }
 
     void OnTriggerEnter(Collider other) 
     {
-        if (other.gameObject.CompareTag ( "Pick Up"))
+        if (other.gameObject.CompareTag ("Pick Up"))
         {
             other.gameObject.SetActive (false);
             count = count + 1;
