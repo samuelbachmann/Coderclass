@@ -86,7 +86,7 @@ def header(lijst_naam):
 
 main()
 
-def lol():
+# def lol():
     # def kies_lijst():
     #     clear()
     #     bestand = os.listdir()
