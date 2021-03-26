@@ -50,7 +50,8 @@ def woorden_toevoegen():
             woord_1 = input("woord: ")
 
             if woord_1.lower() == "q":
-                invullen = False
+                stoppen_woorden(woorden, naam_lijst)
+                break
 
             clear()
             header("Woord: ")
@@ -60,10 +61,18 @@ def woorden_toevoegen():
             woord_2 = input("vertalling: ")
 
             if woord_2.lower() == "q":
-                invullen = False
+                stoppen_woorden(woorden, naam_lijst)
+                break
 
             else:
                 woorden[woord_1] = woord_2
+
+def stoppen_woorden(woorden, naam_lijst):
+    clear()
+    f = open(naam_lijst, "w")
+    for key in woorden:
+        f.write(key + "=" + woorden[key] + "\n")
+
 
 def clear():
     # os.system("clear")
