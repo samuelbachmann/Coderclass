@@ -7,7 +7,9 @@ def keuze_menu():
     clear()
     header("Menu")
     print_regel(" ")
-    print_regel("N - Nieuwe woorden lijst")
+    print_regel("N - Nieuwe woordenlijst")
+    print_regel("V - Verander woordenlijst")
+    print_regel("O - Overhoren")
     footer()
 
     return input("Kies een functie ") 
@@ -17,6 +19,27 @@ def main():
     keuze_lijst = keuze_menu()
     if keuze_lijst.lower() == "n":
         nieuwe_lijst()
+    elif keuze_lijst.lower() == "v":
+        woorden_toevoegen()
+    elif keuze_lijst.lower() == "o":
+        overhoren()
+
+def overhoren():
+    clear()
+    overhoren = {}
+    header("Kies een lijst om te overhoren")
+    print_regel("")
+    for file in os.listdir():
+        if file[-4:] == ".wrd":
+            print_regel(file[:-4])
+    footer()
+    naam_lijst = input("Kies een lijst ") + ".wrd"
+    f = open(naam_lijst, "r")
+    if naam_lijst in os.listdir():
+        with open(naam_lijst) as f:
+            for line in f:
+                (key, val) = line.strip("\n").split("=")
+                overhoren[key] = val
 
 def nieuwe_lijst():
     clear()
@@ -66,12 +89,31 @@ def woorden_toevoegen():
 
             else:
                 woorden[woord_1] = woord_2
+    else:
+        woorden_toevoegen()
+
 
 def stoppen_woorden(woorden, naam_lijst):
     clear()
-    f = open(naam_lijst, "w")
-    for key in woorden:
-        f.write(key + "=" + woorden[key] + "\n")
+    header("Opslaan")
+    print_regel("")
+    print_regel("O - Overwrite (nieuwe lijst)")
+    print_regel("A - Append (worden toevoegen)")
+    footer()
+    opslaan_keuze = input("Opslaan: ")
+    if opslaan_keuze.lower() == "o":
+        o = open(naam_lijst, "w")
+        for key in woorden:
+            o.write(key + "=" + woorden[key] + "\n")
+        o.close()
+
+    elif opslaan_keuze.lower() == "a":
+        a = open(naam_lijst, "a")
+        for key in woorden:
+            a.write(key + "=" + woorden[key] + "\n")
+        a.close()
+    else:
+        stoppen_woorden(woorden, naam_lijst)
 
 
 def clear():
