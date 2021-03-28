@@ -26,7 +26,7 @@ def main():
 
 def overhoren():
     clear()
-    overhoren = {}
+    over = {}
     header("Kies een lijst om te overhoren")
     print_regel("")
     for file in os.listdir():
@@ -39,7 +39,14 @@ def overhoren():
         with open(naam_lijst) as f:
             for line in f:
                 (key, val) = line.strip("\n").split("=")
-                overhoren[key] = val
+                over[key] = val
+
+    clear()
+    header("Woorden")
+    for key in over:
+
+      print_regel(key + " = " + over[key]) 
+    
 
 def nieuwe_lijst():
     clear()
