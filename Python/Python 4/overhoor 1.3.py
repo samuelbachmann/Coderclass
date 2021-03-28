@@ -80,9 +80,9 @@ def overhoren():
         elif start.lower() == "t":
             overhoren()
 
-    elif naam_lijst.lower() == "t":
+    elif naam_lijst.lower() == "t.wrd":
         main()
-    
+
     else:
         clear()
         header("Geen lijst of functie met die naam")
@@ -111,6 +111,7 @@ def woorden_toevoegen():
     for file in os.listdir():
         if file[-4:] == ".wrd":
             print_regel(file[:-4])
+    print_regel("")
     print_regel("T - keuze menu")
     footer()
 
@@ -144,7 +145,7 @@ def woorden_toevoegen():
                 woorden[woord_1] = woord_2
 
     elif naam_lijst.lower() == "t":
-    main()
+        main()
 
     else:
         clear()
@@ -168,12 +169,14 @@ def stoppen_woorden(woorden, naam_lijst):
         for key in woorden:
             o.write(key + "=" + woorden[key] + "\n")
         o.close()
+        main()
 
     elif opslaan_keuze.lower() == "a":
         a = open(naam_lijst, "a")
         for key in woorden:
             a.write(key + "=" + woorden[key] + "\n")
         a.close()
+        main()
 
     elif naam_lijst.lower() == "t":
         main()
@@ -184,7 +187,6 @@ def stoppen_woorden(woorden, naam_lijst):
         footer()
         time.sleep(1)
         stoppen_woorden(woorden, naam_lijst)
-
 
 def clear():
     # os.system("clear")
