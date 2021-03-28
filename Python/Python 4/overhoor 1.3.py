@@ -1,4 +1,5 @@
 import os, sys
+import time
 schrembreedte = 80
 schremhoogte = 40
 os.chdir("woordenlijst")
@@ -6,9 +7,8 @@ os.chdir("woordenlijst")
 def keuze_menu():
     clear()
     header("Menu")
-    print_regel(" ")
     print_regel("N - Nieuwe woordenlijst")
-    print_regel("V - Verander woordenlijst")
+    print_regel("T - Toevoegen woorden aan woordenlijst")
     print_regel("O - Overhoren")
     footer()
 
@@ -19,7 +19,7 @@ def main():
     keuze_lijst = keuze_menu()
     if keuze_lijst.lower() == "n":
         nieuwe_lijst()
-    elif keuze_lijst.lower() == "v":
+    elif keuze_lijst.lower() == "t":
         woorden_toevoegen()
     elif keuze_lijst.lower() == "o":
         overhoren()
@@ -28,25 +28,53 @@ def overhoren():
     clear()
     over = {}
     header("Kies een lijst om te overhoren")
-    print_regel("")
     for file in os.listdir():
         if file[-4:] == ".wrd":
             print_regel(file[:-4])
+    print_regel("")
+    print_regel("T - keuze menu")
     footer()
     naam_lijst = input("Kies een lijst ") + ".wrd"
-    f = open(naam_lijst, "r")
+
     if naam_lijst in os.listdir():
+        f = open(naam_lijst, "r")
         with open(naam_lijst) as f:
             for line in f:
                 (key, val) = line.strip("\n").split("=")
                 over[key] = val
 
-    clear()
-    header("Woorden")
-    for key in over:
+        clear()
+        header("Woorden")
+        for key in over:
+            print_regel(key + " = " + over[key]) 
+        footer()
+        start = input("Om te starten druk S om terug te gaan druk T ")
 
-      print_regel(key + " = " + over[key]) 
-    
+        if start.lower() == "s":
+            for key in over:
+                clear()
+                header(key)
+                print_regel("T - om terug te gaan")
+                footer()
+                vraag = input("vertaling ")
+                if vraag == over[key]:
+                    print("Goed")
+                    time.sleep(1)
+                elif vraag == "t":
+                    main()
+                else:
+                    print("Fout")
+                    print(over[key])
+                    time.sleep(2)
+
+        elif start.lower() == "t":
+            overhoren()
+    else:
+        clear()
+        header("Geen lijst met die naam")
+        footer()
+        time.sleep(1)
+        overhoren()
 
 def nieuwe_lijst():
     clear()
@@ -62,7 +90,6 @@ def woorden_toevoegen():
     invullen = True
     woorden = {}
     header("Woorden toevoegen aan lijst")
-    print_regel("")
     for file in os.listdir():
         if file[-4:] == ".wrd":
             print_regel(file[:-4])
@@ -97,13 +124,16 @@ def woorden_toevoegen():
             else:
                 woorden[woord_1] = woord_2
     else:
+        clear()
+        header("Geen lijst met die naam")
+        footer()
+        time.sleep(1)
         woorden_toevoegen()
 
 
 def stoppen_woorden(woorden, naam_lijst):
     clear()
     header("Opslaan")
-    print_regel("")
     print_regel("O - Overwrite (nieuwe lijst)")
     print_regel("A - Append (worden toevoegen)")
     footer()
@@ -120,6 +150,10 @@ def stoppen_woorden(woorden, naam_lijst):
             a.write(key + "=" + woorden[key] + "\n")
         a.close()
     else:
+        clear()
+        header("Geen functie die zo heet")
+        footer()
+        time.sleep(1)
         stoppen_woorden(woorden, naam_lijst)
 
 
@@ -138,5 +172,6 @@ def header(lijst_naam):
     print("+" + "-" * (schrembreedte - 2) + "+")
     print_regel("")
     print(("| {:^" + str(schrembreedte - 4)+ "} |").format(lijst_naam))
+    print_regel("")
 
 main()
