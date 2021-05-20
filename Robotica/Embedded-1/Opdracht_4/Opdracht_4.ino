@@ -1,30 +1,26 @@
-const int analogInPin = A2;  // Analog input pin:  LDR
-const int analogOutPin = 9; // Analog output pin: LED 
+int E1 = 6;
+int M1 = 7;
+int E2 = 5;
+int M2 = 4;
+int pin11 = 11;
+int pin10 = 10;
+int pin9 = 9;
 
-int sensorValue = 0;        // value read from the LDR
-int outputValue = 0;        // value output to the LED 
-
-void setup() {
-  // initialize serial communications at 9600 bps:
-  Serial.begin(9600); 
+void setup()
+{
+    pinMode(M1, OUTPUT);
+    pinMode(M2, OUTPUT);
 }
 
-void loop() {
-  // read the analog in value:
-  sensorValue = analogRead(analogInPin);            
-  // map it to the range of the analog out:
-  outputValue = map(sensorValue, 0, 1023, 0, 255);  
-  // change the analog out value:
-  analogWrite(analogOutPin, outputValue);           
-
-  // print the results to the serial monitor:
-  Serial.print("sensor = " );                       
-  Serial.print(sensorValue);      
-  Serial.print("\t output = ");      
-  Serial.println(outputValue);   
-
-  // wait 2 milliseconds before the next loop
-  // for the analog-to-digital converter to settle
-  // after the last reading:
-  delay(2);                     
+void loop()
+{
+  int value;
+  for(value = 100 ; value <= 255; value+=5)
+  {
+    digitalWrite(M1,LOW);
+    digitalWrite(M2,HIGH);
+    analogWrite(E1, 100);   //PWM Speed Control
+    analogWrite(E2, 100);   //PWM Speed Control
+    delay(30);
+  }
 }
