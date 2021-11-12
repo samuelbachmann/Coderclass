@@ -2,7 +2,7 @@
 #include <regex>
 
 void checkIfLetter(const std::string userInput){
-    if(!isalpha(userInput)){
+    if(regex_match(userInput,regex("a-z"))){
         throw std::runtime_error("invalid input");
     }
 }
