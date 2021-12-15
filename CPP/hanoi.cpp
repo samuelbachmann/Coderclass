@@ -25,7 +25,6 @@ void towerOfHanio(int plates, char from_tower, char to_tower, char other_tower){
     towerOfHanio(plates - 1, other_tower, to_tower, from_tower);
 }
 
-
 int main(){
     int amount;
 
