@@ -12,7 +12,8 @@ int inputCheck(){
 
 bool checkPlacement(std::vector <std::vector<bool>> &board, int N, int row, int lane){
     row--;
-    if(board.at(row).at(lane) == false and board.at(row).at(lane + 1) and board.at(row).at(lane - 1)){
+    if(board.at(row).at(lane) == false and board.at(row).at(lane + 1) == false and board.at(row).at(lane - 1) == false){
+        std::cout << "hallo";
         return false;
     }else{return true;}
 }
@@ -27,9 +28,10 @@ bool placeQueens(int N, std::vector <std::vector<bool>> &board, int row){
             possible = false;
         }else{lane++;}
     }
-
+    std::cout << "hallo";
     if(row != N){
-        placeQueens(N, board, 0);
+        placeQueens(N, board, row++);
+        return false;
     }else{return true;}
 }
 
