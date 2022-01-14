@@ -1,6 +1,8 @@
 #include <iostream>
 #include <limits>
 #include <vector>
+#include <sstream>
+#include <iterator>
 
 class Stack {
     public:
@@ -40,17 +42,20 @@ int Stack::pop(){
 }
 
 void Stack::push(int i){
-    elements.push_back(i);
+    elements.insert(elements.begin(), i);
 }
 
 std::string Stack::toString() const{
-    std::string vectorString;
-    for(int c = 0;  c < elements.size(); c++){
-        vectorString.append(2, elements[c]);
-        std::cout << elements[c];
+    std::ostringstream oss;
+
+    if (!elements.empty())
+    {
+        std::copy(elements.begin(), elements.end()-1,
+            std::ostream_iterator<int>(oss, ","));
+
+        oss << elements.back();
     }
-    std::cout << vectorString;
-    return vectorString;
+    return oss.str();
 }
 
 int main() {
@@ -81,7 +86,7 @@ int main() {
                 }
                 stack.push(i);
             } else if ( command.compare("list") == 0){
-                std::cout << stack.toString() << std::endl;
+                std::cout << "[" << stack.toString() << "]" << std::endl;
             } else {
                 throw std::runtime_error("invalid command");
             }
