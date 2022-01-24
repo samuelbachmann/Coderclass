@@ -19,9 +19,7 @@ class Stack {
 Stack::Stack(){}
 
 bool Stack::isEmpty() const{
-    if(elements.empty()){
-        return true;
-    }else{return false;}
+    return elements.empty();
 }
 
 int Stack::top() const{

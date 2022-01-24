@@ -1,4 +1,4 @@
-var nauwkeurigheid = 100;  // % (LET OP: dit kan hoger/lager uitkomen)
+// var nauwkeurigheid = 100;  // % (LET OP: dit kan hoger/lager uitkomen)
 var snelheid = 500;  // ms
 var EnableNextButton = true;
 var skipWriting = true; // set to false if you want to do writing yourself
