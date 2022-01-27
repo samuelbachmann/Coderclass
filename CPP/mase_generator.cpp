@@ -15,9 +15,10 @@
 
 class maseGen{
     public:
-        std::vector<std::vector<std::string>> mase();
+        std::string createMase(int height, int width,std::vector<std::string>& currentMase);
+        std::string mase(int height, int width);
     private:
-            std::vector<std::vector<int>> coordinates{
+        std::vector<std::vector<int>> coordinates{
             {1,2,3,1,3},
             {3,2,4,2,2},
             {1,1,1,1,3},
@@ -26,76 +27,92 @@ class maseGen{
         };
 };
 
-std::vector<std::vector<std::string>> maseGen::mase(){
-    for(int i = 0; i < coordinates.size(); i++){
-        for(int c = 0; c < coordinates.at(i).size(); c++){
-            if(coordinates.at(i).at(c) == 1){ // opening to the right
-
-
-            }else if(coordinates.at(i).at(c) == 2){ // opening to the left
-
-            }else if(coordinates.at(i).at(c) == 3){ // opening to the bottom
-
-            }else if(coordinates.at(i).at(c) == 4){ // opening to the top
-
+std::string maseGen::createMase(int height, int width,std::vector<std::string>& currentMase){
+    for(int i = 0; i < height * 2; i++){
+        if(i % 2 != 0){
+            for(int c = 0; c < width; c++){
+                currentMase.at(i) += "+---";
+                if(c++ == width){
+                    currentMase.at(i) += "+\n";
+                }
+            }
+        }else{
+            for(int c = 0; c < width; c++){
+                currentMase.at(i) += "|   ";
+                if(c++ == width){
+                    currentMase.at(i) += "|\n";
+                }
             }
         }
     }
 
+    for(int c = 0; c < width; c++){
+        currentMase.at(height -1) += "+---";
+        if(c++ == width){
+            currentMase.at(height -1) += "+\n";
+        }
+    }    
+
+
+    return "0";
 }
 
-class Cell{
-    public:
-        std::string filledwall(){    
-            return "|   ";
-        }
-        std::string emptyWall(){    
-            return "|   ";
-        }
-        std::string filledRoof(){
-            return "+---+";
-        }
-        std::string emptyRoof(){
-            return "+   +";
-        }
-    private:
-};
+std::string maseGen::mase(int height, int width){
 
-std::string print(int length, int width){
+    for(int i = 0; i < coordinates.size(); i++){
+        for(int c = 0; c < coordinates.at(i).size(); c++){
 
+            if(coordinates.at(i).at(c) == 1){ // opening to the right
+                if (c + 1 > width){
+                    std::cout << "not possible";
+                }else{    
+                    return "0";
+                }
+                
+            }else if(coordinates.at(i).at(c) == 2){ // opening to the left
+                if (c - 1 < width){
+                    std::cout << "not possible";
+                }else{
+                    return "0";
+                }
+
+            }else if(coordinates.at(i).at(c) == 3){ // opening to the bottom
+                if (i + 1 > height){
+                    std::cout << "not possible";
+                }else{
+                    return "0";
+                }
+
+            }else if(coordinates.at(i).at(c) == 4){ // opening to the top
+                if (i + 1 < height){
+                    std::cout << "not possible";
+                }else{
+                    return "0";
+                }
+            }
+        }
+    }
+    return "0";
+}
+
+std::string print(std::vector<std::string> currentMase){
+    for(int i = 0; i < currentMase.size(); i++){
+        std::cout << currentMase.at(i) << "\n";
+    }
+    return "o";
 }
 
 int main(int argc, char **argv){
-    int lenght, width, seed;
+    int height, width, seed;
+    maseGen maseGen;
 
-    lenght = atoi (argv[1]);
+    height = atoi (argv[1]);
     width = atoi (argv[2]);
-    std::cout << print(lenght, width);
+
+    std::vector<std::string> currentMase(height, "");
+
+    maseGen.createMase(height, width, currentMase);
+    print(currentMase);
 
     return 0;
-} 
-
-// std::string print(int length, int width){
-//     for(int i = 0; i < length; i++){
-//         for(int c = 0; c < width; c++){
-//             std::cout << "+---";
-//             if(c +1 == width){
-//                 std::cout << "+\n";
-//             }
-//         }
-//         for(int c = 0; c < width; c++){
-//             std::cout << "|   ";
-//             if(c +1 == width){
-//                 std::cout << "|\n";
-//             }
-//         }
-//     }
-
-//     for(int c = 0; c < width; c++){
-//         std::cout << "+---";
-//         if(c +1 == width){
-//             std::cout << "+\n";
-//         }
-//     }
-//     return "\ncompleted\n";
-// }
+}
