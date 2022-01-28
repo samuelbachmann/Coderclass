@@ -2,6 +2,7 @@
 #include <vector>
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>   
 
 // one block is 3x5 
 //  +---+
@@ -15,103 +16,108 @@
 
 class maseGen{
     public:
-        std::string createMase(int height, int width,std::vector<std::string>& currentMase);
-        std::string mase(int height, int width);
+        void createMase(int height, int width, std::vector<std::string>& currentMase);
+        void maseGeneration(int seed, int height, int width, std::pair<int,int> cords, std::vector<std::string>& currentMase);
     private:
-        std::vector<std::vector<int>> coordinates{
-            {1,2,3,1,3},
-            {3,2,4,2,2},
-            {1,1,1,1,3},
-            {3,2,2,2,2},
-            {1,1,1,1,3},
-        };
+        std::vector<std::pair<int,int>> stack;
 };
 
-std::string maseGen::createMase(int height, int width,std::vector<std::string>& currentMase){
-    for(int i = 0; i < height * 2; i++){
-        if(i % 2 != 0){
+class cells{
+    public: 
+        std::pair<int,int> removeWallsCeilling(std::pair<int,int> cords, int what, int height, int width, std::vector<std::string>& currentMase);
+    private:
+};
+
+void maseGen::createMase(int height, int width, std::vector<std::string>& currentMase){
+    for(int i = 0; i < height; i++){
+        if(i%2 != 0){
             for(int c = 0; c < width; c++){
-                currentMase.at(i) += "+---";
-                if(c++ == width){
-                    currentMase.at(i) += "+\n";
+                currentMase.at(i) += "|   ";
+                if(c +1 == width){
+                    currentMase.at(i) += "|";
                 }
             }
         }else{
             for(int c = 0; c < width; c++){
-                currentMase.at(i) += "|   ";
-                if(c++ == width){
-                    currentMase.at(i) += "|\n";
+                currentMase.at(i) += "+---";
+                if(c +1 == width){
+                    currentMase.at(i) += "+";
                 }
             }
         }
     }
-
-    for(int c = 0; c < width; c++){
-        currentMase.at(height -1) += "+---";
-        if(c++ == width){
-            currentMase.at(height -1) += "+\n";
-        }
-    }    
-
-
-    return "0";
 }
 
-std::string maseGen::mase(int height, int width){
+void maseGen::maseGeneration(int seed, int height, int width, std::pair<int,int> cords, std::vector<std::string>& currentMase){
+    cells cells;
+    std::pair<int,int> newCords;
+    seed++;
+    srand(seed);
+    int randomWall = rand()%4;
+    // stack.push_back(cords);
 
-    for(int i = 0; i < coordinates.size(); i++){
-        for(int c = 0; c < coordinates.at(i).size(); c++){
+}
 
-            if(coordinates.at(i).at(c) == 1){ // opening to the right
-                if (c + 1 > width){
-                    std::cout << "not possible";
-                }else{    
-                    return "0";
-                }
-                
-            }else if(coordinates.at(i).at(c) == 2){ // opening to the left
-                if (c - 1 < width){
-                    std::cout << "not possible";
-                }else{
-                    return "0";
-                }
+std::pair<int,int> cells::removeWallsCeilling(std::pair<int,int> cords, int what, int height, int width, std::vector<std::string>& currentMase){
+    int x,y, newY, newX;
+    x = cords.first * 2 + 1;
+    y = cords.second * 4 + 2;
+    newX = cords.first;
+    newY = cords.second;
 
-            }else if(coordinates.at(i).at(c) == 3){ // opening to the bottom
-                if (i + 1 > height){
-                    std::cout << "not possible";
-                }else{
-                    return "0";
-                }
-
-            }else if(coordinates.at(i).at(c) == 4){ // opening to the top
-                if (i + 1 < height){
-                    std::cout << "not possible";
-                }else{
-                    return "0";
-                }
+    if(what == 0){ //Opening to the right
+        if(y + 1 > width){
+            currentMase.at(x).at(y + 2) =' ';
+            newY = cords.second + 1;
+        }else{return std::make_pair(newX, newY);}
+    }else if(what == 1){//Opening to the left
+        if(y - 1 < 0){
+            currentMase.at(x).at(y - 2) =' ';
+            newY = cords.second - 1;
+        }else{return std::make_pair(newX, newY);}
+    }else if(what == 2){//Opening to the bottom
+        if(x - 1 >! width){
+            for(int i = 0; i < 3; i++){
+                currentMase.at(x + 1).at(y - 1 + i) =' ';
             }
-        }
+            newX = cords.first + 1;
+        }else{return std::make_pair(newX, newY);}
+    }else if(what == 3){//Opening to the top
+        if(x - 1 < 0){
+            for(int i = 0; i < 3; i++){
+                currentMase.at(x - 1).at(y - 1 + i) =' ';
+            }
+            newX = cords.first - 1;
+        }else{return std::make_pair(newX, newY);}
     }
-    return "0";
+    return std::make_pair(newX, newY);
 }
 
-std::string print(std::vector<std::string> currentMase){
+void print(std::vector<std::string> currentMase){
     for(int i = 0; i < currentMase.size(); i++){
         std::cout << currentMase.at(i) << "\n";
     }
-    return "o";
 }
 
 int main(int argc, char **argv){
     int height, width, seed;
+
     maseGen maseGen;
+    cells cells;
 
-    height = atoi (argv[1]);
+    height = atoi (argv[1]) ;
     width = atoi (argv[2]);
+    std::pair<int,int> cords(0,0);
+    
+    height = height * 2 + 1;
+    std::vector<std::string> currentMase(height);
 
-    std::vector<std::string> currentMase(height, "");
+    if(argc == 4){
+        seed = atoi (argv[3]);
+    }else{seed = time(NULL);}
 
     maseGen.createMase(height, width, currentMase);
+    cells.removeWallsCeilling(cords, 3, height, width, currentMase);
     print(currentMase);
 
     return 0;

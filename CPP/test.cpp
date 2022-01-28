@@ -61,3 +61,41 @@
 //         currentMase.at(height) += "+\n";
 //     }
 // }
+
+// std::string maseGen::mase(int height, int width){
+
+//     for(int i = 0; i < coordinates.size(); i++){
+//         for(int c = 0; c < coordinates.at(i).size(); c++){
+
+//             if(coordinates.at(i).at(c) == 1){ // opening to the right
+//                 if (c + 2 > width){
+//                     std::cout << "not possible";
+//                 }else{    
+//                     std::cout << i << c;
+//                 }
+                
+//             }else if(coordinates.at(i).at(c) == 2){ // opening to the left
+//                 if (c < 0){
+//                     std::cout << "not possible";
+//                 }else{
+
+//                 }
+
+//             }else if(coordinates.at(i).at(c) == 3){ // opening to the bottom
+//                 if (i + 2 > height){
+//                     std::cout << "not possible";
+//                 }else{
+                    
+//                 }
+
+//             }else if(coordinates.at(i).at(c) == 4){ // opening to the top
+//                 if (i < 0){
+//                     std::cout << "not possible";
+//                 }else{
+                    
+//                 }
+//             }
+//         }
+//     }
+//     return "0";
+// }
