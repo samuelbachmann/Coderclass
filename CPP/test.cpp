@@ -99,3 +99,25 @@
 //     }
 //     return "0";
 // }
+
+    // if(cords.second + 1 <= width){ //Opening to the right
+    //     std::cout << "1 \n";
+    //     if(checkIfvisited(std::make_pair(cords.first, cords.second + 1)) == false){
+    //         cells.removeWallsCeilling(cords, 0, height, width, currentmaze);
+    //     }
+    // }else if(cords.second - 1 >= 0){ //Opening to the left
+    //     std::cout << "2 \n";
+    //     if(checkIfvisited(std::make_pair(cords.first, cords.second - 1)) == false){
+    //         cells.removeWallsCeilling(cords, 1, height, width, currentmaze);
+    //     }
+    // }else if(cords.first + 1 <= height){ //Opening to the bottom
+    //     std::cout << "3 \n";
+    //     if(checkIfvisited(std::make_pair(cords.first + 1, cords.second)) == false){
+    //         cells.removeWallsCeilling(cords, 2, height, width, currentmaze);
+    //     }
+    // }else if(cords.first - 1 >= 0){ //Opening to the top
+    //     std::cout << "4 \n";
+    //     if(checkIfvisited(std::make_pair(cords.first - 1, cords.second)) == false){
+    //         cells.removeWallsCeilling(cords, 3, height, width, currentmaze);
+    //     }
+    // }
