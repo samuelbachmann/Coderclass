@@ -38,7 +38,7 @@ def overhoren():
     clear()
     over = {}
     header("Kies een lijst om te overhoren")
-    for file in os.listdir():
+    for  file in os.listdir():
         if file[-4:] == ".wrd":
             print_regel(file[:-4])
     print_regel("")
