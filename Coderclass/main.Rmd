@@ -1,50 +1,31 @@
 ---
-title: "Pie Chart of Onderwijsuitgaven 2020"
+title: "Melk"
 output: html_document
 ---
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.height=8, fig.width=12}
 # Load the required libraries
 library(ggplot2)
-library(dplyr)
-library(RColorBrewer)
-library(viridis)
-library(GGally)
+library(reshape2)
 
 # Read the dataset
-data <- read.csv("onderwijsuitgaven_2020.csv")
+data1 <- read.csv("Melkaanvoer_en_zuivelproductie2016-2020.csv", sep = ";", dec = ",")
+data2 <- read.csv("Melkaanvoer_en_zuivelproductie2011-2015.csv", sep = ";", dec = ",")
+data3 <- read.csv("Melkaanvoer_en_zuivelproductie2006-2010.csv", sep = ";", dec = ",")
 
-# Create a pie chart
-pie_chart <- ggplot(data, aes(x = reorder(Onderwijssectoren, Totaal, decrease=TRUE  ), y = Totaal, fill = Totaal)) +
-  geom_bar(stat = "identity", width = 1) +
-  coord_polar("y", start = 0) +
-  labs(title = "Distribution of Onderwijsuitgaven 2020", fill = "Totaal in million") +
-  theme_minimal()+
-  theme(axis.title.y = element_blank()) +
-  scale_fill_viridis()
+# Merge datasets
+data <- rbind(data3, data2, data1)
+data_long<- melt(data, id.vars=c("Perioden"))
 
-# Display the pie chart
-print(pie_chart)
+# Create graph plot
+p<-ggplot(data_long,aes(Perioden, value, col=variable))
+p+geom_point()+facet_wrap(.~variable, scales = "free", ncol=2)+ geom_smooth()+ theme(legend.position = "none")
 
-# Create a pie chart
-pie_chart <- ggplot(data, aes(x = "", y = Totaal, fill = Totaal)) +
-  geom_bar(stat = "identity", width = 1) +
-  coord_polar("y", start = 0) +
-  labs(title = "Distribution of Onderwijsuitgaven 2020", fill = "Totaal in million") +
-  theme_minimal()+
-  theme(axis.title.y = element_blank()) +
-   scale_fill_viridis() +  theme(axis.text = element_blank(), legend.position = "none")
-   
-   
-# Display the pie chart
-print(pie_chart)
+#create boxplot plot
+p<-ggplot(data_long,aes(Perioden, value, col=variable))
+p+geom_boxplot()+facet_wrap(.~variable, scales = "free", ncol=2) + theme(legend.position = "none")
 
-
-ggpairs(airquality)
-
-
-
-
-
-
+#create linegraph plot q
+p<-ggplot(data_long,aes(Perioden, value, col=variable))
+p+geom_line()+facet_wrap(.~variable, scales = "free", ncol=2)+ theme(legend.position = "none")
 ```
