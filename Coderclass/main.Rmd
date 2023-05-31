@@ -1,5 +1,5 @@
 ---
-title: "Melk"
+title: "Melkaanvoer en zuivelproductie 2006-2020"
 output: html_document
 ---
 
@@ -13,7 +13,7 @@ library(reshape2)
 data1 <- read.csv("Melkaanvoer_en_zuivelproductie2016-2020.csv", sep = ";", dec = ",")
 data2 <- read.csv("Melkaanvoer_en_zuivelproductie2011-2015.csv", sep = ";", dec = ",")
 data3 <- read.csv("Melkaanvoer_en_zuivelproductie2006-2010.csv", sep = ";", dec = ",")
-header_text <- c("Perioden","Hoeveelheid \n(1000 kg)", "Vetgehalte \n (%)", "Eiwitgehalte \n (%)", "Melkpoeder totaal \n(1000 kg)", "Niet-mager \nmelkpoeder \n(1000 kg)", "Mager melkpoeder \n(1000 kg)", "Gecondenseerde melk \n(1000 kg)")
+header_text <- c("Perioden","Hoeveelheid \n(1000 kg)", "Vetgehalte (%)", "Eiwitgehalte (%)", "Melkpoeder totaal \n(1000 kg)", "Niet-mager \nmelkpoeder \n(1000 kg)", "Mager melkpoeder \n(1000 kg)", "Gecondenseerde \nmelk \n(1000 kg)")
 
 # Merge datasets
 data <- rbind(data3, data2, data1)
@@ -26,9 +26,16 @@ p<-ggplot(data_long,aes(Perioden, value, col=variable))
 # Create graph plot
 p+geom_point()+facet_wrap(.~variable, scales = "free", ncol=2) + geom_smooth(method = 'loess', formula = 'y ~ x') + theme(legend.position = "none")
 
+print("In deze scatterplot zie je hoe over de periode van 2006-2020 verschillende aspecten van melkaanvoer en zuivelproductie zich hebben ontwikkeld. Je kunt bijvoorbeeld een stijging zien in de algmene melk productie en resulterende producte zien maar dat dingen als het vet en eiwit percentage redelijk het zelfde blijfen.")
+
 #create boxplot plot with jitter
 p+geom_boxplot()+ geom_jitter()+facet_wrap(.~variable, scales = "free", nrow= 1 ) + theme(legend.position = "none")
 
+print("De boxplots hierboven zijn samen met een form van scatterplot plot genaamd jitter. Wat je uit deze boxplots kun uitlezen is waar het grootste deel vaan de ")
+
+
 #create linegraph plot
 p+geom_line()+facet_wrap(.~variable, scales = "free", ncol=2)+ theme(legend.position = "none")
+
+
 ```
