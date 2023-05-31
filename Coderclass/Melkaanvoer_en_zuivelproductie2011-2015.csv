@@ -1,6 +1,6 @@
-﻿"Perioden";"Melkaanvoer/Hoeveelheid (1 000 kg)";"Melkaanvoer/Vetgehalte (%)";"Melkaanvoer/Eiwitgehalte (%)";"Zuivelproductie/Melkpoeder/Melkpoeder, totaal (1 000 kg)";"Zuivelproductie/Melkpoeder/Niet-mager melkpoeder (1 000 kg)";"Zuivelproductie/Melkpoeder/Mager melkpoeder (1 000 kg)";"Zuivelproductie/Gecondenseerde melk (1 000 kg)"
-"2011";11641718;4,4;3,51;193176;131450;61726;354421
-"2012";11675448;4,4;3,53;186968;121138;65830;371273
-"2013";12212690;4,4;3,53;193653;128291;65363;360352
-"2014";12473023;4,34;3,51;204761;139682;65079;382192
-"2015";13330873;4,38;3,53;204231;135660;68571;407775
+﻿"Perioden";"Melkaanvoer/Hoeveelheid (1 000 kg)";"Melkaanvoer/Vetgehalte (%)";"Melkaanvoer/Eiwitgehalte (%)";"Zuivelproductie/Boter (1 000 kg)";"Zuivelproductie/Fabriekskaas (1 000 kg)";"Zuivelproductie/Melkpoeder/Melkpoeder, totaal (1 000 kg)";"Zuivelproductie/Gecondenseerde melk (1 000 kg)"
+"2011";11641718;4,4;3,51;128988;749679;193176;354421
+"2012";11675448;4,4;3,53;133286;764161;186968;371273
+"2013";12212690;4,4;3,53;133455;793516;193653;360352
+"2014";12473023;4,34;3,51;140524;771941;204761;382192
+"2015";13330873;4,38;3,53;147577;844974;204231;407775

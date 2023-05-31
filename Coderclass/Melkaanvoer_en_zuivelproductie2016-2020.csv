@@ -1,6 +1,6 @@
-﻿"Perioden";"Melkaanvoer/Hoeveelheid (1 000 kg)";"Melkaanvoer/Vetgehalte (%)";"Melkaanvoer/Eiwitgehalte (%)";"Zuivelproductie/Melkpoeder/Melkpoeder, totaal (1 000 kg)";"Zuivelproductie/Melkpoeder/Niet-mager melkpoeder (1 000 kg)";"Zuivelproductie/Melkpoeder/Mager melkpoeder (1 000 kg)";"Zuivelproductie/Gecondenseerde melk (1 000 kg)"
-"2016";14324438;4,4;3,54;235863;165658;70205;372221
-"2017";14295931;4,37;3,56;249887;184146;65740;366985
-"2018";13880920;4,37;3,56;226382;161381;65001;343298
-"2019";13802159;4,41;3,58;243958;177122;66836;390833
-"2020";13986695;4,42;3,58;248115;177605;70510;393852
+﻿"Perioden";"Melkaanvoer/Hoeveelheid (1 000 kg)";"Melkaanvoer/Vetgehalte (%)";"Melkaanvoer/Eiwitgehalte (%)";"Zuivelproductie/Boter (1 000 kg)";"Zuivelproductie/Fabriekskaas (1 000 kg)";"Zuivelproductie/Melkpoeder/Melkpoeder, totaal (1 000 kg)";"Zuivelproductie/Gecondenseerde melk (1 000 kg)"
+"2016";14324438;4,4;3,54;161311;887812;235863;372221
+"2017";14295931;4,37;3,56;149015;874238;249887;366985
+"2018";13880920;4,37;3,56;153674;878908;226382;343298
+"2019";13802159;4,41;3,58;136524;920809;243958;390833
+"2020";13986695;4,42;3,58;133605;972734;248115;393852
