@@ -6,8 +6,8 @@ output: html_document
 ```{r, echo=FALSE, fig.height=8, fig.width=12}
 # Load the required libraries
 library(ggplot2)
-library(ggtext)
 library(reshape2)
+library(dplyr)
 
 # Read the dataset
 data1 <- read.csv("Melkaanvoer_en_zuivelproductie2016-2020.csv", sep = ";", dec = ",")
@@ -26,16 +26,33 @@ p<-ggplot(data_long,aes(Perioden, value, col=variable))
 # Create graph plot
 p+geom_point()+facet_wrap(.~variable, scales = "free", ncol=2) + geom_smooth(method = 'loess', formula = 'y ~ x') + theme(legend.position = "none")
 
-print("In deze scatterplot zie je hoe over de periode van 2006-2020 verschillende aspecten van melkaanvoer en zuivelproductie zich hebben ontwikkeld. Je kunt bijvoorbeeld een stijging zien in de algmene melk productie en resulterende producte zien maar dat dingen als het vet en eiwit percentage redelijk het zelfde blijfen.")
+```
+In de grafiek hierboven worden verschillende catogorien in ten opzichte van de tijd laten zien.
+```{r, echo=FALSE, fig.height=8, fig.width=12}
 
 #create boxplot plot with jitter
 p+geom_boxplot()+ geom_jitter()+facet_wrap(.~variable, scales = "free", nrow= 1 ) + theme(legend.position = "none")
 
-print("De boxplots hierboven zijn samen met een form van scatterplot plot genaamd jitter. Wat je uit deze boxplots kun uitlezen is waar het grootste deel vaan de ")
-
-
 #create linegraph plot
 p+geom_line()+facet_wrap(.~variable, scales = "free", ncol=2)+ theme(legend.position = "none")
 
+# Filter the specific variables and years
+data_filtered2006 <- data_long %>% filter(variable %in% c("Niet-mager \nmelkpoeder \n(1000 kg)", "Mager melkpoeder \n(1000 kg)", "Gecondenseerde \nmelk \n(1000 kg)"), Perioden %in% c("2006"))
+data_filtered2020 <- data_long %>% filter(variable %in% c("Niet-mager \nmelkpoeder \n(1000 kg)", "Mager melkpoeder \n(1000 kg)", "Gecondenseerde \nmelk \n(1000 kg)"), Perioden %in% c("2020"))
 
+# Calculate the percentage relative to each other
+data_percentage2006 <- data_filtered2006 %>%
+  group_by(Perioden) %>%
+  mutate(Percentage = value / sum(value) * 100)
+
+data_percentage2020 <- data_filtered2020 %>%
+  group_by(Perioden) %>%
+  mutate(Percentage = value / sum(value) * 100)
+
+# Create barplot
+p2020 <- ggplot(data_percentage2006, aes(x = Perioden, y = Percentage, fill = variable))
+p2020 + geom_bar(stat = "identity", position = "dodge") + ggtitle("Productie van verschillende melkpoeders in 2006") + theme(legend.position = "top")
+
+p2006 <- ggplot(data_percentage2020, aes(x = Perioden, y = Percentage, fill=variable))
+p2006+geom_bar(stat = "identity", position = "dodge") + ggtitle("Productie van verschillende melkpoeders in 2020") + theme(legend.position = "none")
 ```
