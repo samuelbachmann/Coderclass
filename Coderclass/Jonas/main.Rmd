@@ -6,25 +6,24 @@ output: html_document
 ```{r, echo=FALSE, fig.height=8, fig.width=12}
 # Load the required libraries
 library(ggplot2)
-library(reshape2)
+library(tidyr)
 library(dplyr)
 
 # Read the dataset
-data1 <- read.csv("Melkaanvoer_en_zuivelproductie2016-2020.csv", sep = ";", dec = ",")
-data2 <- read.csv("Melkaanvoer_en_zuivelproductie2011-2015.csv", sep = ";", dec = ",")
-data3 <- read.csv("Melkaanvoer_en_zuivelproductie2006-2010.csv", sep = ";", dec = ",")
-header_text <- c("Perioden","Hoeveelheid \n(1000 kg)", "Vetgehalte (%)", "Eiwitgehalte (%)","Boter \n(1000 kg)", "Fabriekskaas \n(1000 kg)", "Melkpoeder totaal \n(1000 kg)", "Gecondenseerde \nmelk \n(1000 kg)")
+data <- read.csv("Visserij_en_aquacultuur__hoeveelheid.csv", sep = ";", dec = ",")
 
-# Merge datasets
-data <- rbind(data3, data2, data1)
-colnames(data) <- header_text
-data_long<- melt(data, id.vars=c("Perioden"))
+# Rename the columns
+colnames(data) <- c("Vissoorten en schelpdieren", "Perioden", "Hoeveelheid (1000kg)")
 
-#intialize point P
-p<-ggplot(data_long,aes(Perioden, value, col=variable))
+# Reshape the data using pivot_longer
+data_long <- pivot_longer(data, cols = -Perioden, names_to = "variable", values_to = "value")
 
-# Create graph plot
-p+geom_point()+facet_wrap(.~variable, scales = "free", ncol=2) + geom_smooth(method = 'loess', formula = 'y ~ x') + theme(legend.position = "none")
+# Initialize the ggplot object
+p <- ggplot(data_long, aes(Perioden, value, col = variable))
+
+# Create the plot
+p + geom_point() + facet_wrap(. ~ variable, scales = "free", ncol = 2) + geom_smooth(method = "loess", formula = "y ~ x") + theme(legend.position = "none")
+
 
 ```
 In de grafieken hierboven worden verschillende catogorien ten opzichte van een periode laten zien in dit geval 2006 tot en met 2020. Bij de eerste grafiek die de productie van melk in nederland aangeeft zie je een stabiele stijging. Boter stijgt ongeveer evensnel tot in 2016 een daling begint terwijl er bij melk alleen sprake is van een lichte daling. Bij de andere grafieken die gaan of geproduceerde goederen zie je een relatief stabiele stieging over de laatste 15 jaar. Het vetgehalte in de melk is een kleinbeetje gestegen maar is over het algemeen het zelfde gebleven. Het eiwitgehalte heeft een stijging van 0.1% over 15 jaar dit is een hele lichte stijging.
