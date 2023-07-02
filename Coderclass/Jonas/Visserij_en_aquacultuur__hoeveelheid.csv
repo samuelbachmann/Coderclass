@@ -1,81 +1,257 @@
 ﻿"Vissoorten, schaal- en schelpdieren";"Perioden";"Aangevoerde hoeveelheid (1 000 kg)"
-"Griet";"2000";1106
-"Griet";"2005";1258
+"Europese kreeft";"2006";24
+"Europese kreeft";"2007";24
+"Europese kreeft";"2008";27
+"Europese kreeft";"2009";29
+"Europese kreeft";"2010";26
+"Europese kreeft";"2011";27
+"Europese kreeft";"2012";40
+"Europese kreeft";"2013";47
+"Europese kreeft";"2014 ";81
+"Europese kreeft";"2015 ";82
+"Europese kreeft";"2016";64
+"Europese kreeft";"2017";80
+"Europese kreeft";"2018";49
+"Europese kreeft";"2019";42
+"Europese kreeft";"2020";38
+"Europese kreeft";"2021 ";34
+"Griet";"2006";1250
+"Griet";"2007";1460
+"Griet";"2008";1140
+"Griet";"2009";1333
 "Griet";"2010";1285
+"Griet";"2011";1118
+"Griet";"2012";1083
+"Griet";"2013";920
+"Griet";"2014 ";780
 "Griet";"2015 ";1308
+"Griet";"2016";945
+"Griet";"2017";930
+"Griet";"2018";794
+"Griet";"2019";888
 "Griet";"2020";777
-"Noordzee garnalen";"2000";8450
-"Noordzee garnalen";"2005";9651
+"Griet";"2021 ";581
+"Noordzee garnalen";"2006";9829
+"Noordzee garnalen";"2007";8712
+"Noordzee garnalen";"2008";10873
+"Noordzee garnalen";"2009";15132
 "Noordzee garnalen";"2010";14044
+"Noordzee garnalen";"2011";13296
+"Noordzee garnalen";"2012";11906
+"Noordzee garnalen";"2013";15475
+"Noordzee garnalen";"2014 ";19060
 "Noordzee garnalen";"2015 ";16672
+"Noordzee garnalen";"2016";16158
+"Noordzee garnalen";"2017";11855
+"Noordzee garnalen";"2018";24001
+"Noordzee garnalen";"2019";14016
 "Noordzee garnalen";"2020";15682
-"Langoustine (Noorse kreeft)";"2000";725
-"Langoustine (Noorse kreeft)";"2005";2250
+"Noordzee garnalen";"2021 ";14263
+"Noordzeekrab";"2006";1891
+"Noordzeekrab";"2007";2829
+"Noordzeekrab";"2008";2713
+"Noordzeekrab";"2009";2238
+"Noordzeekrab";"2010";1813
+"Noordzeekrab";"2011";2194
+"Noordzeekrab";"2012";976
+"Noordzeekrab";"2013";711
+"Noordzeekrab";"2014 ";1314
+"Noordzeekrab";"2015 ";2716
+"Noordzeekrab";"2016";522
+"Noordzeekrab";"2017";1271
+"Noordzeekrab";"2018";2521
+"Noordzeekrab";"2019";540
+"Noordzeekrab";"2020";421
+"Noordzeekrab";"2021 ";2310
+"Langoustine (Noorse kreeft)";"2006";2337
+"Langoustine (Noorse kreeft)";"2007";2949
+"Langoustine (Noorse kreeft)";"2008";1803
+"Langoustine (Noorse kreeft)";"2009";2235
 "Langoustine (Noorse kreeft)";"2010";1342
+"Langoustine (Noorse kreeft)";"2011";1732
+"Langoustine (Noorse kreeft)";"2012";1532
+"Langoustine (Noorse kreeft)";"2013";951
+"Langoustine (Noorse kreeft)";"2014 ";994
 "Langoustine (Noorse kreeft)";"2015 ";1476
+"Langoustine (Noorse kreeft)";"2016";1658
+"Langoustine (Noorse kreeft)";"2017";1971
+"Langoustine (Noorse kreeft)";"2018";1132
+"Langoustine (Noorse kreeft)";"2019";1318
 "Langoustine (Noorse kreeft)";"2020";847
-"Mossel";"2000";66800
-"Mossel";"2005";59457
+"Langoustine (Noorse kreeft)";"2021 ";1540
+"Mossel";"2006";29807
+"Mossel";"2007";41209
+"Mossel";"2008";36181
+"Mossel";"2009";45520
 "Mossel";"2010";56092
+"Mossel";"2011";36425
+"Mossel";"2012";39704
+"Mossel";"2013";37112
+"Mossel";"2014 ";53783
 "Mossel";"2015 ";54210
+"Mossel";"2016";53167
+"Mossel";"2017";43968
+"Mossel";"2018";45482
+"Mossel";"2019";38094
 "Mossel";"2020";32420
-"Oesters";"2000";2952
-"Oesters";"2005";2641
+"Mossel";"2021 ";32848
+"Oesters";"2006";2752
+"Oesters";"2007";2978
+"Oesters";"2008";1865
+"Oesters";"2009";2074
 "Oesters";"2010";3510
+"Oesters";"2011";3362
+"Oesters";"2012";2327
+"Oesters";"2013";2750
+"Oesters";"2014 ";3264
 "Oesters";"2015 ";2704
+"Oesters";"2016";3299
+"Oesters";"2017";2241
+"Oesters";"2018";2551
+"Oesters";"2019";2544
 "Oesters";"2020";2351
-"Kabeljauw";"2000";8238
-"Kabeljauw";"2005";2846
+"Oesters";"2021 ";2069
+"Kabeljauw";"2006";2721
+"Kabeljauw";"2007";3021
+"Kabeljauw";"2008";3153
+"Kabeljauw";"2009";4489
 "Kabeljauw";"2010";3415
+"Kabeljauw";"2011";2047
+"Kabeljauw";"2012";1471
+"Kabeljauw";"2013";710
+"Kabeljauw";"2014 ";623
 "Kabeljauw";"2015 ";1488
+"Kabeljauw";"2016";1252
+"Kabeljauw";"2017";627
+"Kabeljauw";"2018";533
+"Kabeljauw";"2019";1071
 "Kabeljauw";"2020";523
-"Schar";"2000";9273
-"Schar";"2005";8964
+"Kabeljauw";"2021 ";1186
+"Rode poon";"2006";3112
+"Rode poon";"2007";3683
+"Rode poon";"2008";2707
+"Rode poon";"2009";2822
+"Rode poon";"2010";1251
+"Rode poon";"2011";1289
+"Rode poon";"2012";1185
+"Rode poon";"2013";1361
+"Rode poon";"2014 ";1542
+"Rode poon";"2015 ";3113
+"Rode poon";"2016";3777
+"Rode poon";"2017";3420
+"Rode poon";"2018";2467
+"Rode poon";"2019";1892
+"Rode poon";"2020";2045
+"Rode poon";"2021 ";1996
+"Schar";"2006";8259
+"Schar";"2007";9341
+"Schar";"2008";8331
+"Schar";"2009";6843
 "Schar";"2010";6251
+"Schar";"2011";4780
+"Schar";"2012";3855
+"Schar";"2013";2955
+"Schar";"2014 ";2495
 "Schar";"2015 ";3002
+"Schar";"2016";2699
+"Schar";"2017";1866
+"Schar";"2018";2239
+"Schar";"2019";2439
 "Schar";"2020";1982
-"Schelvis";"2000";305
-"Schelvis";"2005";153
+"Schar";"2021 ";1909
+"Schelvis";"2006";101
+"Schelvis";"2007";127
+"Schelvis";"2008";66
+"Schelvis";"2009";31902
 "Schelvis";"2010";55
+"Schelvis";"2011";37
+"Schelvis";"2012";53
+"Schelvis";"2013";9
+"Schelvis";"2014 ";19
 "Schelvis";"2015 ";70
+"Schelvis";"2016";187
+"Schelvis";"2017";127
+"Schelvis";"2018";123
+"Schelvis";"2019";273
 "Schelvis";"2020";295
-"Schol";"2000";52664
-"Schol";"2005";51843
+"Schelvis";"2021 ";480
+"Schol";"2006";49056
+"Schol";"2007";47532
+"Schol";"2008";45963
+"Schol";"2009";48440
 "Schol";"2010";45096
+"Schol";"2011";43925
+"Schol";"2012";35553
+"Schol";"2013";32925
+"Schol";"2014 ";25711
 "Schol";"2015 ";49744
+"Schol";"2016";35318
+"Schol";"2017";32209
+"Schol";"2018";26485
+"Schol";"2019";21840
 "Schol";"2020";18319
-"Tarbot";"2000";2763
-"Tarbot";"2005";3939
+"Schol";"2021 ";17565
+"Tarbot";"2006";3524
+"Tarbot";"2007";4426
+"Tarbot";"2008";3426
+"Tarbot";"2009";3163
 "Tarbot";"2010";1994
+"Tarbot";"2011";1813
+"Tarbot";"2012";1817
+"Tarbot";"2013";1678
+"Tarbot";"2014 ";1452
 "Tarbot";"2015 ";2073
+"Tarbot";"2016";1838
+"Tarbot";"2017";2015
+"Tarbot";"2018";1953
+"Tarbot";"2019";1824
 "Tarbot";"2020";1982
-"Tong";"2000";17483
-"Tong";"2005";21856
+"Tarbot";"2021 ";1704
+"Tong";"2006";16168
+"Tong";"2007";19916
+"Tong";"2008";18237
+"Tong";"2009";18100
 "Tong";"2010";10221
+"Tong";"2011";8818
+"Tong";"2012";9354
+"Tong";"2013";9887
+"Tong";"2014 ";8696
 "Tong";"2015 ";10328
+"Tong";"2016";9575
+"Tong";"2017";9234
+"Tong";"2018";8426
+"Tong";"2019";6745
 "Tong";"2020";6539
-"Wijting";"2000";2247
-"Wijting";"2005";1603
+"Tong";"2021 ";6307
+"Wijting";"2006";1664
+"Wijting";"2007";1164
+"Wijting";"2008";1186
+"Wijting";"2009";1353
 "Wijting";"2010";828
+"Wijting";"2011";570
+"Wijting";"2012";427
+"Wijting";"2013";391
+"Wijting";"2014 ";395
 "Wijting";"2015 ";1233
+"Wijting";"2016";1182
+"Wijting";"2017";1275
+"Wijting";"2018";1100
+"Wijting";"2019";1491
 "Wijting";"2020";1162
-"Blauwe wijting (bevroren aangevoerd)";"2000";58216
-"Blauwe wijting (bevroren aangevoerd)";"2005";155992
-"Blauwe wijting (bevroren aangevoerd)";"2010";48090
-"Blauwe wijting (bevroren aangevoerd)";"2015 ";101892
-"Blauwe wijting (bevroren aangevoerd)";"2020";110436
-"Haring (bevroren aangevoerd)";"2000";142233
-"Haring (bevroren aangevoerd)";"2005";227998
-"Haring (bevroren aangevoerd)";"2010";89491
-"Haring (bevroren aangevoerd)";"2015 ";172550
-"Haring (bevroren aangevoerd)";"2020";115484
-"Horsmakreel (bevroren aangevoerd)";"2000";114036
-"Horsmakreel (bevroren aangevoerd)";"2005";104184
-"Horsmakreel (bevroren aangevoerd)";"2010";122991
-"Horsmakreel (bevroren aangevoerd)";"2015 ";57086
-"Horsmakreel (bevroren aangevoerd)";"2020";21311
-"Makreel (bevroren aangevoerd)";"2000";71334
-"Makreel (bevroren aangevoerd)";"2005";49895
-"Makreel (bevroren aangevoerd)";"2010";67333
-"Makreel (bevroren aangevoerd)";"2015 ";113506
-"Makreel (bevroren aangevoerd)";"2020";67050
+"Wijting";"2021 ";1067
+"Zeebaars";"2006";450
+"Zeebaars";"2007";493
+"Zeebaars";"2008";452
+"Zeebaars";"2009";531
+"Zeebaars";"2010";313
+"Zeebaars";"2011";296
+"Zeebaars";"2012";201
+"Zeebaars";"2013";181
+"Zeebaars";"2014 ";110
+"Zeebaars";"2015 ";217
+"Zeebaars";"2016";156
+"Zeebaars";"2017";139
+"Zeebaars";"2018";165
+"Zeebaars";"2019";200
+"Zeebaars";"2020";216
+"Zeebaars";"2021 ";231

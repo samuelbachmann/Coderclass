@@ -10,18 +10,15 @@ library(reshape2)
 library(dplyr)
 
 # Read the dataset
-data1 <- read.csv("Melkaanvoer_en_zuivelproductie2016-2020.csv", sep = ";", dec = ",")
-data2 <- read.csv("Melkaanvoer_en_zuivelproductie2011-2015.csv", sep = ";", dec = ",")
-data3 <- read.csv("Melkaanvoer_en_zuivelproductie2006-2010.csv", sep = ";", dec = ",")
-header_text <- c("Perioden","Hoeveelheid \n(1000 kg)", "Vetgehalte (%)", "Eiwitgehalte (%)","Boter \n(1000 kg)", "Fabriekskaas \n(1000 kg)", "Melkpoeder totaal \n(1000 kg)", "Gecondenseerde \nmelk \n(1000 kg)")
+data <- read.csv("Melkaanvoer_en_zuivelproductie_02072023_130401.csv", sep = ";", dec = ",")
 
-# Merge datasets
-data <- rbind(data3, data2, data1)
-colnames(data) <- header_text
-data_long<- melt(data, id.vars=c("Perioden"))
+# Transform dataset
+headerText <- c("Perioden","Hoeveelheid \n(1000 kg)", "Vetgehalte (%)", "Eiwitgehalte (%)","Boter \n(1000 kg)", "Fabriekskaas \n(1000 kg)", "Melkpoeder totaal \n(1000 kg)", "Gecondenseerde \nmelk \n(1000 kg)")
+colnames(data) <- headerText
+dataLong<- melt(data, id.vars=c("Perioden"))
 
 #intialize point P
-p<-ggplot(data_long,aes(Perioden, value, col=variable))
+p<-ggplot(dataLong,aes(Perioden, value, col=variable))
 
 # Create graph plot
 p+geom_point()+facet_wrap(.~variable, scales = "free", ncol=2) + geom_smooth(method = 'loess', formula = 'y ~ x') + theme(legend.position = "none")
@@ -29,12 +26,8 @@ p+geom_point()+facet_wrap(.~variable, scales = "free", ncol=2) + geom_smooth(met
 ```
 In de grafieken hierboven worden verschillende catogorien ten opzichte van een periode laten zien in dit geval 2006 tot en met 2020. Bij de eerste grafiek die de productie van melk in nederland aangeeft zie je een stabiele stijging. Boter stijgt ongeveer evensnel tot in 2016 een daling begint terwijl er bij melk alleen sprake is van een lichte daling. Bij de andere grafieken die gaan of geproduceerde goederen zie je een relatief stabiele stieging over de laatste 15 jaar. Het vetgehalte in de melk is een kleinbeetje gestegen maar is over het algemeen het zelfde gebleven. Het eiwitgehalte heeft een stijging van 0.1% over 15 jaar dit is een hele lichte stijging.
 ```{r, echo=FALSE, fig.height=8, fig.width=12}
-
-
-
 #create boxplot plot with jitter
 p+geom_boxplot()+ geom_jitter()+facet_wrap(.~variable, scales = "free", nrow= 1 ) + theme(legend.position = "none")
-
 
 ```
 In de boxplotten hierboven kun je zien in welke kwartiel de grootste deel van de productie is dit is voor de vet en eiwitgehalte niet van belang wel is het interesant voor de andere grafieken
@@ -42,20 +35,20 @@ In de boxplotten hierboven kun je zien in welke kwartiel de grootste deel van de
 ```{r, echo=FALSE, fig.height=8, fig.width=12}
 
 # Filter the specific variables and years
-data_filtered2006 <- data_long %>% filter(variable %in% c("Boter \n(1000 kg)", "Fabriekskaas \n(1000 kg)", "Melkpoeder totaal \n(1000 kg)", "Gecondenseerde \nmelk \n(1000 kg)"), Perioden %in% c("2006"))
-data_filtered2020 <- data_long %>% filter(variable %in% c("Boter \n(1000 kg)", "Fabriekskaas \n(1000 kg)", "Melkpoeder totaal \n(1000 kg)", "Gecondenseerde \nmelk \n(1000 kg)"), Perioden %in% c("2020"))
+dataFiltered2006 <- dataLong %>% filter(variable %in% c("Boter \n(1000 kg)", "Fabriekskaas \n(1000 kg)", "Melkpoeder totaal \n(1000 kg)", "Gecondenseerde \nmelk \n(1000 kg)"), Perioden %in% c("2006"))
+dataFiltered2020 <- dataLong %>% filter(variable %in% c("Boter \n(1000 kg)", "Fabriekskaas \n(1000 kg)", "Melkpoeder totaal \n(1000 kg)", "Gecondenseerde \nmelk \n(1000 kg)"), Perioden %in% c("2020"))
 
 # Calculate the percentage relative to each other
-data_percentage2006 <- data_filtered2006 %>%
+dataPercentage2006 <- dataFiltered2006 %>%
   group_by(Perioden) %>%
   mutate(Percentage = value / sum(value) * 100)
 
-data_percentage2020 <- data_filtered2020 %>%
+data_percentage2020 <- dataFiltered2020 %>%
   group_by(Perioden) %>%
   mutate(Percentage = value / sum(value) * 100)
 
 # Create barplot
-p2020 <- ggplot(data_percentage2006, aes(x = Perioden, y = Percentage, fill = variable))
+p2020 <- ggplot(dataPercentage2006, aes(x = Perioden, y = Percentage, fill = variable))
 p2020 + geom_bar(stat = "identity", position = "dodge") + ggtitle("Productie van verschillende melkpoeders in 2006") + theme(legend.position = "top") + scale_y_continuous(labels = c(10, 20, 30, 40, 50, 60), breaks = c(10, 20, 30, 40, 50, 60))
 
 p2006 <- ggplot(data_percentage2020, aes(x = Perioden, y = Percentage, fill=variable))
