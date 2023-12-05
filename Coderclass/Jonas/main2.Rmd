@@ -1,0 +1,82 @@
+---
+title: "Visserij en aquacultuur hoeveelheid 2006-2021"
+output: html_document
+---
+
+Alle gewichten zijn x1000 en zijn in KG
+
+```{r, echo=FALSE, fig.height=12, fig.width=12}
+
+suppressMessages(library(tidyverse))
+
+# Load the required libraries
+library(ggplot2)
+library(tidyverse)
+library(dplyr)
+
+# Read the CSV file
+data <- read.delim("Visserij_en_aquacultuur__hoeveelheid.csv", sep = ";")
+header_text <- c("Vissoort","Perioden", "Hoeveelheid")
+colnames(data) <- header_text
+
+#Pivot the data from long to wide format
+data_wide <- data %>% pivot_wider(names_from = Vissoort, values_from = Hoeveelheid)
+
+#intialize point P
+p<-ggplot(data,aes(Perioden, Hoeveelheid, col=Vissoort))
+
+# Create graph plot
+p+geom_point()+facet_wrap(.~Vissoort, scales = "free", ncol=2) + geom_smooth(method = 'loess', formula = 'y ~ x') + theme(legend.position = "none")
+
+```
+
+Voeg hier beschijving to over grafieken ^
+
+```{r, echo=FALSE, fig.height=14, fig.width=12}
+#create boxplot plot with jitter
+p+geom_boxplot()+ geom_jitter()+facet_wrap(.~Vissoort, scales = "free", nrow= 3 ) + theme(legend.position = "none")
+
+```
+
+Voeg hier beschijving to over boxplotten ^
+
+```{r, echo=FALSE, fig.height=8, fig.width=12}
+
+SchaalEnSchelpDieren2006 <- data_wide %>% filter(Perioden == 2006) %>% select("Europese kreeft", "Noordzee garnalen", "Noordzeekrab", "Langoustine (Noorse kreeft)", "Mossel", "Oesters") %>% summarise(total_sum = rowSums(.))
+VerseVis2006 <- data_wide %>% filter(Perioden == 2006) %>% select("Griet", "Kabeljauw", "Rode poon", "Schar", "Schelvis", "Schol", "Tarbot", "Tong", "Wijting", "Zeebaars") %>% summarise(total_sum = rowSums(.))
+
+# Calculate the percentages
+total <- SchaalEnSchelpDieren2006 + VerseVis2006
+percentageSchaalEnSchelpDieren2006 <- (SchaalEnSchelpDieren2006 / total) * 100
+percentageVerseVis2006 <- (VerseVis2006 / total) * 100
+
+# Create a data frame
+SchaalEnSchelpDieren2006Framed <- data.frame(Variable = "Schaal- En Schelpdieren", Value = percentageSchaalEnSchelpDieren2006)
+VerseVis2006Framed <- data.frame(Variable = "Verse vis", Value = percentageVerseVis2006)
+
+# Combine data frames
+dataPercentage2006 <- rbind(SchaalEnSchelpDieren2006Framed, VerseVis2006Framed)
+
+p2006 <- ggplot(dataPercentage2006, aes(x = "2006", y = total_sum, fill = Variable))
+p2006 + geom_bar(stat = "identity", position = "dodge") + ggtitle("Percentage schaal- en schelpdieren en verse vis 2006") + xlab("Year") + ylab("Percentage") + labs(fill = NULL) + theme(legend.position = "top")
+
+SchaalEnSchelpDieren2021 <- data_wide %>% filter(Perioden == 2021) %>% select("Europese kreeft", "Noordzee garnalen", "Noordzeekrab", "Langoustine (Noorse kreeft)", "Mossel", "Oesters") %>% summarise(total_sum = rowSums(.))
+VerseVis2021 <- data_wide %>% filter(Perioden == 2021) %>% select("Griet", "Kabeljauw", "Rode poon", "Schar", "Schelvis", "Schol", "Tarbot", "Tong", "Wijting", "Zeebaars") %>% summarise(total_sum = rowSums(.))
+
+# Calculate the percentages
+total <- SchaalEnSchelpDieren2021 + VerseVis2021
+percentageSchaalEnSchelpDieren2021 <- (SchaalEnSchelpDieren2021 / total) * 100
+percentageVerseVis2021 <- (VerseVis2021 / total) * 100
+
+# Create a data frame
+SchaalEnSchelpDieren2021Framed <- data.frame(Variable = "Schaal- En Schelpdieren", Value = percentageSchaalEnSchelpDieren2021)
+VerseVis2021Framed <- data.frame(Variable = "Verse vis", Value = percentageVerseVis2021)
+
+# Combine data frames
+dataPercentage2021 <- rbind(SchaalEnSchelpDieren2021Framed, VerseVis2021Framed)
+
+p2021 <- ggplot(dataPercentage2021, aes(x = "2021", y = total_sum, fill = Variable))
+p2021 + geom_bar(stat = "identity", position = "dodge") + ggtitle("Percentage schaal- en schelpdieren en verse vis 2021") + xlab("Year") + ylab("Percentage") +  theme(legend.position = "none")
+
+```
+Voeg hier beschijving to over grafieken ^
