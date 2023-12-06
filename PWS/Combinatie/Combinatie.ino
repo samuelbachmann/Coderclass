@@ -15,7 +15,7 @@ float temperature = 21.0;
 float humidity = 25.0;
 
 unsigned long previousMillis = 0;
-const long interval = 300;  // Set the interval in milliseconds (300ms in this case)
+const long interval = 1000;  // Set the interval in milliseconds (300ms in this case)
 
 void setup() {
   Serial.begin(9600);
