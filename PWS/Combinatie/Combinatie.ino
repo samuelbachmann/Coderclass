@@ -1,5 +1,5 @@
 #include <MQ135.h>
-#include "TinyGPS++.h"
+#include "TinyGPSpp.h"
 #include <SoftwareSerial.h>
 
 #define PIN_MQ135 A2
@@ -14,14 +14,22 @@ SoftwareSerial ss(RXPin, TXPin);
 float temperature = 21.0;
 float humidity = 25.0;
 
+unsigned long previousMillis = 0;
+const long interval = 300;  // Set the interval in milliseconds (300ms in this case)
+
 void setup() {
   Serial.begin(9600);
   ss.begin(GPSBaud);
 }
 
 void loop() {
-  readMQ135();
-  readGPS();
+  unsigned long currentMillis = millis();
+
+  if (currentMillis - previousMillis >= interval) {
+    previousMillis = currentMillis;
+    readMQ135();
+    readGPS();
+  }
 }
 
 void readMQ135() {
@@ -42,8 +50,6 @@ void readMQ135() {
   Serial.print("\t Corrected PPM: ");
   Serial.print(correctedPPM);
   Serial.println("ppm");
-
-  delay(300);
 }
 
 void readGPS() {
